@@ -2,8 +2,10 @@ import React from 'react'
 
 export default function Navbar() {
   return (
-    <div>
-      
-    </div>
-  )
+    <nav>
+      <Link to="/">Posts</Link>
+      {" | "}
+      <Link to="/new">Nuevo Post</Link>
+    </nav>
+  );
 }
