@@ -2,7 +2,7 @@ import React from 'react'
 import {useTheme} from "../hooks/UseTheme.js";
 
 
-
+import { Link } from 'react-router-dom';
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
