@@ -1,45 +1,55 @@
 import { useState } from "react";
+import "./PostForm.css";
 
-function PostForm({ onSubmit }) {
+export default function PostForm({
+  onSubmit,
+  initialData = {},
+}) {
+  const [title, setTitle] = useState(
+    initialData.title || ""
+  );
 
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [body, setBody] = useState(
+    initialData.body || ""
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     onSubmit({
       title,
-      body
+      body,
     });
+
+    setTitle("");
+    setBody("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-
+    <form
+      className="post-form"
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
-        placeholder="Titulo"
+        placeholder="Título"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) =>
+          setTitle(e.target.value)
+        }
+        required
       />
-
-      <br />
-
       <textarea
         placeholder="Contenido"
         value={body}
-        onChange={(e) => setBody(e.target.value)}
+        onChange={(e) =>
+          setBody(e.target.value)
+        }
+        required
       />
-
-      <br />
-
       <button type="submit">
         Guardar
       </button>
-
     </form>
   );
 }
-
-export default PostForm;
