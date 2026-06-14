@@ -10,3 +10,12 @@ useEffect(() => {
   }, []);
 
   if (state.loading) return <p>Cargando...</p>;
+
+
+
+# nuevo commit 12/06/2026 hacer npm i para instarlar el hashBrouser 
+# AppRouter
+aca tenemos que agregar todas las rutas que necesitemos
+
+# NotFoundPage 
+componente para pagina no encontrada
