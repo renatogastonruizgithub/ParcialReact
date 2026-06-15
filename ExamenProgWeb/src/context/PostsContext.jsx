@@ -1,4 +1,4 @@
-import { createContext, useReducer, useContext } from "react";
+import { createContext, useReducer, useContext,useCallback  } from "react";
 import { postService } from "../services/posts.service";
 
 const initialState = {
@@ -55,7 +55,7 @@ export const PostsProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(postsReducer, initialState)
 
-    const cargarPosts = async () => {
+    const cargarPosts = useCallback(async () => {
         dispatch({ type: "LOADING" })
         try {
             const data = await postService.getAll();
@@ -64,10 +64,9 @@ export const PostsProvider = ({ children }) => {
             dispatch({ type: "ERROR", payload: error.message })
             throw error
         }
-    };
+    }, []);
 
-
-    const obtenerPostPorId = async (id) => {
+    const obtenerPostPorId = useCallback(async (id) => {
         // primero verificamos si el post ya está en el estado
         const postEnEstado = state.posts.find(p => p.id.toString() === id.toString());
 
@@ -84,10 +83,10 @@ export const PostsProvider = ({ children }) => {
             dispatch({ type: "ERROR", payload: error.message })
             throw error
         }
-    };
+    }, []);
 
 
-    const agregarPost = async (postData) => {
+    const agregarPost = useCallback(async (postData) => {
         dispatch({ type: "LOADING" })
         try {
             const newPost = await postService.create(postData);
@@ -96,10 +95,10 @@ export const PostsProvider = ({ children }) => {
             dispatch({ type: "ERROR", payload: error.message })
             throw error
         }
-    }
+    }, []);
 
 
-    const editarPost = async (id, postData) => {
+    const editarPost = useCallback(async (id, postData) => {
         dispatch({ type: "LOADING" })
         try {
             const updatedPost = await postService.update(id, postData)
@@ -108,10 +107,10 @@ export const PostsProvider = ({ children }) => {
             dispatch({ type: "ERROR", payload: error.message })
             throw error
         }
-    }
+    }, []);
 
 
-    const eliminarPost = async (id) => {
+    const eliminarPost = useCallback(async (id) => {
         dispatch({ type: "LOADING" })
         try {
             await postService.remove(id)
@@ -121,7 +120,7 @@ export const PostsProvider = ({ children }) => {
             dispatch({ type: "ERROR", payload: error.message })
             throw error
         }
-    }
+    }, []);
 
 
     return (
