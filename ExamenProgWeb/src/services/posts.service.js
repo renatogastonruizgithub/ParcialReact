@@ -15,9 +15,9 @@ const handleResponse = async (response) => {
 //Operaciones CRUD
 export const postService = {
   //
-  //Hace el Get para obtener la lista completa de posts
+  //Hace el Get para obtener la lista completa de posts con un límite de 15
   async getAll() {
-    const response = await fetch(API_URL);
+    const response = await fetch(`${API_URL}?_limit=15`);
     return handleResponse(response);
   },
 

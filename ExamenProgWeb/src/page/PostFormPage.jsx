@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { PostsContext, usePosts } from "../hooks/usePosts";
+import { usePosts } from '../hooks/usePosts';
+
 import LoadingSpinner from "../components/LoadingSpinner";
 import PostForm from "../components/PostForm";
 
@@ -14,7 +15,7 @@ const PostFormPage = () => {
   // convierte a booleano (truthy/falsy)
   const isEditing = !!id;
 
-  const [state, obtenerPostPorId, agregarPost, editarPost] = usePosts();
+  const {state, obtenerPostPorId, agregarPost, editarPost} = usePosts();
 
   const [error, setError] = useState(null);
 
@@ -23,7 +24,7 @@ const PostFormPage = () => {
     if (isEditing && id) {
       obtenerPostPorId(id);
     }
-  }, [id, isEditing, obtenerPostPorId]);
+  }, [id]);
 
   // Maneja el envío del formulario tanto para crear como para editar
   const handleSubmit = async (formData) => {
@@ -59,7 +60,7 @@ const PostFormPage = () => {
           {error && <div className="alert alert-danger">{error}</div>}
 
           <PostForm
-            post={state.postById}
+          post={isEditing ? state.postById : null}
             onSubmit={handleSubmit}
             isEditing={isEditing}
           />

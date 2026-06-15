@@ -13,20 +13,27 @@ export default function PostCard({
       <p>{post.body}</p>
 
       <div className="post-buttons">
-        <button onClick={() => onView(post.id)}>
-          Ver
-        </button>
+        {onView && (
+          <button onClick={() => onView(post.id)}>
+            Ver
+          </button>
+        )
+        }
+        {
+          onEdit && (
+            <button onClick={() => onEdit(post.id)}>
+              Editar
+            </button>
+          )
+        }
 
-        <button onClick={() => onEdit(post.id)}>
-          Editar
-        </button>
-
-        <button
+        {onDelete && (<button
           className="delete-btn"
-          onClick={() => onDelete(post.id)}
+          onClick={() => onDelete?.(post.id)}
         >
           Eliminar
-        </button>
+        </button>)
+        }
       </div>
     </div>
   );
