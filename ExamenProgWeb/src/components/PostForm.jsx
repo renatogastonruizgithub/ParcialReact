@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -52,46 +51,13 @@ const PostForm = ({ post, onSubmit, isEditing = false }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!validate()) return;
 
-    onSubmit({
-      title,
-      body,
-    });
-
-    setTitle("");
-    setBody("");
-
+    onSubmit(formData);
+  };
 
   //Formulario
   return (
-    <form
-      className="post-form"
-      onSubmit={handleSubmit}
-    >
-      <input
-        type="text"
-        placeholder="Título"
-        value={title}
-        onChange={(e) =>
-          setTitle(e.target.value)
-        }
-        required
-      />
-      <textarea
-        placeholder="Contenido"
-        value={body}
-        onChange={(e) =>
-          setBody(e.target.value)
-        }
-        required
-      />
-      <button type="submit">
-        Guardar
-      </button>
-    </form>
-  );
-}
-
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <input type="hidden" name="userId" value={formData.userId} />
@@ -144,7 +110,7 @@ const PostForm = ({ post, onSubmit, isEditing = false }) => {
         </button>
       </div>
     </form>
-  
+  );
 };
 
 export default PostForm;
