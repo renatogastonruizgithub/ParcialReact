@@ -1,21 +1,39 @@
 # levantar el proyecto
- npm run dev
+
+npm run dev
+
 # en PostConetex.js
-esta el userReducer con el State y se lo pasamos al contextProvider para implentar los metodos del servicio 
+
+esta el userReducer con el State y se lo pasamos al contextProvider para implentar los metodos del servicio
+
 # estos son los metodos para hacer el crud, ¿como usarlo? importar en el componente el usePost() y usar el metodo
+
 const { state, loadPosts,cargarPosts,obtenerPostPorId,agregarPost,editarPost,eliminarPost } = usePosts();
 ej:
 useEffect(() => {
-    loadPosts();
-  }, []);
+loadPosts();
+}, []);
 
-  if (state.loading) return <p>Cargando...</p>;
+if (state.loading) return <p>Cargando...</p>;
 
+# nuevo commit 12/06/2026 hacer npm i para instarlar el hashBrouser
 
-
-# nuevo commit 12/06/2026 hacer npm i para instarlar el hashBrouser 
 # AppRouter
+
 aca tenemos que agregar todas las rutas que necesitemos
 
-# NotFoundPage 
+# NotFoundPage
+
 componente para pagina no encontrada
+
+# postService
+
+Centraliza todas las llamadas HTTP a la API REST de posts.
+
+# PostForm
+
+Formulario reutilizable para crear y editar posts.
+
+# PostFormPage
+
+Página que combina la lógica con el componente PostForm
