@@ -1,28 +1,46 @@
 import React from 'react'
-import { usePosts } from '../hooks/usePosts';
-import { useEffect } from 'react';
+import { usePostsList } from '../hooks/usePosts';
+import PostCard from '../components/PostCard';
+import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../components/LoadingSpinner';
+import ErrorMessage from '../components/ErrorMessage';
+
 
 
 export default function PostsPage() {
-  const { state,cargarPosts } = usePosts();
+  const { posts, error, loading, eliminarPost } = usePostsList()
+  const navigate = useNavigate()
 
-useEffect(() => {
-    cargarPosts();
-  }, []);
+  const handleView = (id) => {
+    navigate(`/detalle/${id}`)
+  }
+  const handleEdit = (id) => { navigate(`/editarPost/${id}`) }
+
+
+  const handleDelete = (id) => {
+    if (window.confirm("¿Estás seguro?")) {
+      eliminarPost(id);
+    }
+  }
+
+
+
+  if (loading) return <LoadingSpinner />
+  if (error) return <ErrorMessage message={error} />
+
+  if (!posts) return null
+
   return (
     <div>
-    <h1>Posts</h1>
-
-
-{/* para probar que ande */}
-    <ul>
-      {state.posts.map((post) => (
-        <li key={post.id}>
-          <h2>{post.title}</h2>
-          <p>{post.body}</p>
-        </li>
+      <h1>Posts</h1>
+      {posts.map((post) => (
+        <PostCard key={post.id}
+          post={post}
+          onView={handleView}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
       ))}
-    </ul>
     </div>
   )
 }

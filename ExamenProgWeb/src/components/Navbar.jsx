@@ -10,7 +10,7 @@ export default function Navbar() {
     <nav>
       <Link to="/">Posts</Link>
       {" | "}
-      <Link to="/new">Nuevo Post</Link>
+      <Link to="/nuevoPost">Nuevo Post</Link>
 
 
         <button onClick={toggleTheme}>

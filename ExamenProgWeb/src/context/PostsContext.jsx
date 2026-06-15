@@ -62,21 +62,31 @@ export const PostsProvider = ({ children }) => {
             dispatch({ type: "GET_ALL", payload: data })
         } catch (error) {
             dispatch({ type: "ERROR", payload: error.message })
+            throw error
         }
     };
 
 
     const obtenerPostPorId = async (id) => {
+        // primero verificamos si el post ya está en el estado
+        const postEnEstado = state.posts.find(p => p.id.toString() === id.toString());
+
+        if (postEnEstado) {          
+            dispatch({ type: "GET_ONE", payload: postEnEstado });
+            return;
+        }
+
         dispatch({ type: "LOADING" })
         try {
             const data = await postService.getById(id);
             dispatch({ type: "GET_ONE", payload: data })
         } catch (error) {
             dispatch({ type: "ERROR", payload: error.message })
+            throw error
         }
     };
 
-  
+
     const agregarPost = async (postData) => {
         dispatch({ type: "LOADING" })
         try {
@@ -84,6 +94,7 @@ export const PostsProvider = ({ children }) => {
             dispatch({ type: "CREATE", payload: newPost })
         } catch (error) {
             dispatch({ type: "ERROR", payload: error.message })
+            throw error
         }
     }
 
@@ -95,6 +106,7 @@ export const PostsProvider = ({ children }) => {
             dispatch({ type: "UPDATE", payload: updatedPost })
         } catch (error) {
             dispatch({ type: "ERROR", payload: error.message })
+            throw error
         }
     }
 
@@ -103,10 +115,11 @@ export const PostsProvider = ({ children }) => {
         dispatch({ type: "LOADING" })
         try {
             await postService.remove(id)
-        
-            dispatch({ type: "DELETE_", payload: id })
+
+            dispatch({ type: "DELETE", payload: id })
         } catch (error) {
-           dispatch({ type: "ERROR", payload: error.message })
+            dispatch({ type: "ERROR", payload: error.message })
+            throw error
         }
     }
 
@@ -114,8 +127,8 @@ export const PostsProvider = ({ children }) => {
     return (
         <PostsContext.Provider
             value={{
-                state,        
-                cargarPosts,   
+                state,
+                cargarPosts,
                 obtenerPostPorId,
                 agregarPost,
                 editarPost,

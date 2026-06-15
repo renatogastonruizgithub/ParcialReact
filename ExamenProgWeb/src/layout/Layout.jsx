@@ -10,23 +10,18 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Layout() {
     const { theme } = useTheme();
-  const { state } = usePosts();
+    const { state } = usePosts();
     return (
         <>
 
-            <section className={`app ${theme}`}> 
+            <section className={`app ${theme}`}>
                 <header>
                     <Navbar />
                 </header>
-
-            {state.loading && <LoadingSpinner />}
-            {state.error && <ErrorMessage message={state.error} />}
-         
                 <main style={{ padding: '0 20px' }}>
-                    <Outlet />   {/*   //aca vamos a inyectar el contenido de cada ruta */}
+                    <Outlet />
                 </main>
-
-               <Footer />
+                <Footer />
             </section>
         </>
     )
