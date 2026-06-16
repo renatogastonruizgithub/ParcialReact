@@ -4,6 +4,7 @@ import { HashRouter } from 'react-router-dom';
 import { PostsProvider } from './context/PostsContext.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
 import AppRouter from './router/AppRouter.jsx';
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 
 createRoot(document.getElementById('root')).render(

@@ -13,9 +13,9 @@ export default function AppRouter() {
             {/*     envolvemos todas las rutas dentro del layout*/}
                 <Route path="/" element={<Layout />}>
              {/*    agregamos las rutas hijas necesarias */} 
+                    <Route index element={<PostsPage />} />
                     <Route path="/nuevoPost" element={<PostFormPage />} />
                     <Route path="/editarPost/:id" element={<PostFormPage />} />
-                    <Route path="/" element={<PostsPage />} />
                     <Route path="/detalle/:id" element={<PostDetailPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>

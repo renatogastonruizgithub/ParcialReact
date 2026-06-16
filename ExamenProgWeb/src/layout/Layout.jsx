@@ -13,12 +13,11 @@ export default function Layout() {
     const { state } = usePosts();
     return (
         <>
-
-            <section className={`app ${theme}`}>
+            <section data-bs-theme={theme} className={`app ${theme} min-vh-100 d-flex flex-column`}>
                 <header>
                     <Navbar />
                 </header>
-                <main style={{ padding: '0 20px' }}>
+                <main className="flex-grow-1" style={{ padding: '0 20px' }}>
                     <Outlet />
                 </main>
                 <Footer />

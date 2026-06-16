@@ -1,46 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { usePosts } from '../hooks/usePosts';
-
+import { usePosts } from "../hooks/usePosts";
 import LoadingSpinner from "../components/LoadingSpinner";
 import PostForm from "../components/PostForm";
+import { mostrarExito, mostrarError } from "../utils/alerts"; // usar SweetAlert al guardar
 
 const PostFormPage = () => {
-  // Obtiene el parámetro id
   const { id } = useParams();
-
-  //Redirige Programáticamente
   const navigate = useNavigate();
-
-  // convierte a booleano (truthy/falsy)
   const isEditing = !!id;
 
-  const {state, obtenerPostPorId, agregarPost, editarPost} = usePosts();
-
+  const { state, obtenerPostPorId, agregarPost, editarPost } = usePosts();
   const [error, setError] = useState(null);
 
-  // Cargar el post si estamos editando
   useEffect(() => {
     if (isEditing && id) {
       obtenerPostPorId(id);
     }
   }, [id]);
 
-  // Maneja el envío del formulario tanto para crear como para editar
   const handleSubmit = async (formData) => {
     try {
       if (isEditing) {
         await editarPost(id, formData);
+        await mostrarExito("¡Guardado!", "Los cambios se guardaron correctamente"); // NUEVO
       } else {
         await agregarPost(formData);
+        await mostrarExito("¡Creado!", "El post se creó correctamente"); // NUEVO
       }
       navigate("/");
     } catch (err) {
       setError(err.message);
+      await mostrarError("Error", err.message); // NUEVO
     }
   };
 
-  //Muestra el spinner mientras se carga el post
   if (state.loading) {
     return (
       <LoadingSpinner message={isEditing ? "Cargando post..." : "Procesando"} />
@@ -60,7 +54,7 @@ const PostFormPage = () => {
           {error && <div className="alert alert-danger">{error}</div>}
 
           <PostForm
-          post={isEditing ? state.postById : null}
+            post={isEditing ? state.postById : null}
             onSubmit={handleSubmit}
             isEditing={isEditing}
           />
