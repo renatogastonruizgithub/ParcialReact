@@ -4,7 +4,6 @@ Proyecto grupal de Programación Web (2026).
 
 Somos Milagros Belen Pedrasa,Renato Gaston Ruiz , Torres Oliva Hector Gabriel y Nahuel Valentin Heredia. Armamos una app de posts con React que consume la API de JSONPlaceholder (https://jsonplaceholder.typicode.com/posts).
 
-La app permite ver un listado de posts, entrar al detalle, crear uno nuevo, editarlo, eliminarlo y cambiar entre modo claro y oscuro.
 ---
 ## Cómo correr el proyecto
 Entrar a la carpeta ExamenProgWeb (no a ParcialReact, ahí no funciona):
@@ -17,9 +16,11 @@ Después abrir http://localhost:5173/#/
 ---
 ## Cómo nos organizamos
 Al principio armamos un plan entre los cuatro para no pisarnos el trabajo. La idea fue separar por capas: primero lo que no dependía de nadie, después ir conectando todo.
-Una regla que acordamos desde el vuelo: **ningún componente ni page hace fetch directo**. Todo el fetch queda en el service, el context lo usa, y las pages llegan a los datos por hooks.
+Una regla que acordamos: **ningún componente ni page hace fetch directo**. Todo el fetch queda en el service, el context lo usa, y las pages llegan a los datos por hooks.
 ---
 ## Qué hizo cada uno
+
+**RENATO**Inicio la base del proyecto. creo repo y las carpetas vacias para que los demas trabajen tranquilos en sus propias ramas 
 **Milagros** arrancó con el ThemeContext (modo claro/oscuro) en `context/ThemeContext.jsx`, el hook `UseTheme.js` y los estilos en `theme.css`. Eso lo pudo hacer en paralelo sin esperar a nadie. Gabriel y Nahuel necesitaban eso para seguir con sus partes.
 
 **Gabriel** se encargó del service en `services/posts.service.js`. Ahí están las 5 funciones del CRUD con fetch: getAll, getById, create, update y remove. Es el único archivo del proyecto que habla con la API. Cuando lo terminó avisó al grupo para hacer merge a main.
@@ -29,6 +30,9 @@ Una regla que acordamos desde el vuelo: **ningún componente ni page hace fetch 
 **Renato** trabajó cuando el service ya estaba en main. Armó el `PostsContext` con useReducer (posts, loading, error) y los métodos cargarPosts, obtenerPostPorId, agregarPost, editarPost y eliminarPost. También creó los hooks en `usePosts.js`: usePosts, usePostsList y usePostDetail. Todo eso llama al service de Gabriel, no repite la lógica de fetch.
 
 **Milagros** (después de que Rena y Nahuel terminaron) hizo la integración final: las pages, el router, el layout, Bootstrap y SweetAlert2.
+
+**RENATO** se encarga de hacer deploy
+
 
 En `page/` quedaron:
 - PostsPage: listado con usePostsList y PostCard
@@ -63,7 +67,6 @@ React, Vite, React Router (HashRouter), Bootstrap 5 por CDN, SweetAlert2, JSONPl
 ---
 
 ## Cumplimiento de la consigna del proyecto
-
 Acá dejamos punto por punto lo que pide el profe, qué tenemos hecho y qué nos falta todavía.
 ---
 
