@@ -1,14 +1,16 @@
-# Parcial React - ExamenProgWeb
+# Parcial React 
 
 Proyecto grupal de Programación Web (2026).
 
-Somos Milagros Belen Pedrasa,Renato Gaston Ruiz , Torres Oliva Hector Gabriel y Nahuel Valentin Heredia. Armamos una app de posts con React que consume la API de JSONPlaceholder (https://jsonplaceholder.typicode.com/posts).
+Somos Milagros Belen Pedrasa, Renato Gaston Ruiz , Torres Oliva Hector Gabriel y Nahuel Valentin Heredia. Armamos una app de posts con React que consume la API de JSONPlaceholder
+
+## url de la app:
+https://renatogastonruizgithub.github.io/ParcialReact/
 
 ---
 ## Cómo correr el proyecto
-Entrar a la carpeta ExamenProgWeb (no a ParcialReact, ahí no funciona):
-```
-cd ExamenProgWeb
+
+cd ParcialReact
 npm install
 npm run dev
 ```
