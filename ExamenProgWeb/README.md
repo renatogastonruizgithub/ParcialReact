@@ -67,29 +67,18 @@ React, Vite, React Router (HashRouter), Bootstrap 5 por CDN, SweetAlert2, JSONPl
 ---
 
 ## Cumplimiento de la consigna del proyecto
-Acá dejamos punto por punto lo que pide el profe, qué tenemos hecho y qué nos falta todavía.
+Acá dejamos punto por punto, qué tenemos hecho y qué nos falta todavía.
 ---
-
-### Condiciones de presentación
+ Condiciones de presentación
 
 **Lo que pide el profe:** entregar el código completo, un README con instrucciones e integrantes, una demo en GitHub Pages o un video, y subir un zip llamado `ParcialReact` por Teams (lo sube un solo integrante del grupo).
 
 **Lo que cumplimos:**
 - Código fuente completo del proyecto en React + Vite.
 - Este README con cómo instalar (`npm install`) y correr (`npm run dev`) el proyecto.
-- Nombres de los integrantes: Gabriel, Nahuel, Milagros Pedrasa y Rena.
+- Nombres de los integrantes: Gabriel, Nahuel, Milagros Pedrasa y Renato.
 
-**Lo que nos falta:**
-- Publicar la app en GitHub Pages y pegar acá la URL (ejemplo: `https://TU-USUARIO.github.io/ParcialReact/`). Si no hacemos el deploy, hay que grabar el video demostrativo.
-- Configurar el deploy: falta poner `base: '/ParcialReact/'` en `vite.config.js`, instalar `gh-pages` y agregar los scripts `predeploy` y `deploy` en el `package.json`.
-- Comprimir todo en `ParcialReact.zip` y subirlo por Teams al momento de entregar.
-
-**Nota:** ya tenemos `HashRouter` en `main.jsx`, que es lo que pide el Anexo A para que GitHub Pages no tire 404 al refrescar.
-
----
-
-### 1. CRUD sobre la API (30 puntos)
-
+ 1. CRUD sobre la API (30 puntos)
 **Lo que pide el profe:** una SPA que consuma JSONPlaceholder y haga GET, POST, PUT y DELETE sobre `/posts` usando solo `fetch`. Tiene que haber loading, errores amigables, y después de crear/editar/eliminar actualizar el estado local sin volver a hacer un GET.
 
 **Lo que cumplimos:**
@@ -98,11 +87,11 @@ Acá dejamos punto por punto lo que pide el profe, qué tenemos hecho y qué nos
 - Spinner de carga (`LoadingSpinner`) y mensajes de error (`ErrorMessage` y SweetAlert2).
 - Al crear, editar o eliminar un post, la lista se actualiza sola sin recargar la página ni pedir la lista de nuevo a la API.
 
-**Detalle menor:** el listado trae 15 posts (`?_limit=15`) en lugar de los 100. Funciona igual, pero la consigna dice "todos".
+**Detalle:** el listado trae 15 posts (`?_limit=15`) en lugar de los 100. Funciona igual, pero la consigna dice "todos".
 
 ---
 
-### 2. React Router (20 puntos)
+ 2. React Router (20 puntos)
 
 **Lo que pide el profe:** al menos 3 rutas — listado en `/`, detalle en `/posts/:id`, y una ruta extra a elección. Usar HashRouter (para GitHub Pages), Link, useNavigate, useParams, y un Navbar.
 
@@ -118,7 +107,7 @@ Acá dejamos punto por punto lo que pide el profe, qué tenemos hecho y qué nos
 
 ---
 
-### 3. Hooks avanzados (20 puntos)
+3. Hooks avanzados (20 puntos)
 
 **Lo que pide el profe:** implementar al menos uno de estos — useContext, useReducer, o un custom hook reutilizable usado en 2+ lugares.
 
@@ -129,7 +118,7 @@ Acá dejamos punto por punto lo que pide el profe, qué tenemos hecho y qué nos
 
 ---
 
-### 4. Arquitectura limpia (10 puntos)
+ 4. Arquitectura limpia (10 puntos)
 
 **Lo que pide el profe:** separar en carpetas `services/`, `hooks/`, `components/` y pages. El fetch solo en services, la lógica fuera del JSX, nombres claros.
 
@@ -137,10 +126,9 @@ Acá dejamos punto por punto lo que pide el profe, qué tenemos hecho y qué nos
 - Carpetas organizadas: `services/`, `hooks/`, `components/`, `page/`, `context/`, `router/`, `layout/`.
 - Cero llamadas a `fetch` en pages ni components.
 - Services hacen HTTP, hooks/context manejan estado, components solo pintan UI.
-
 ---
 
-### 5. useRef (5 puntos)
+ 5. useRef (5 puntos)
 
 **Lo que pide el profe:** usar `useRef` en algo real — foco automático en un input, scroll al top al cambiar de ruta, etc. No vale un contador con useRef.
 
@@ -148,7 +136,7 @@ Acá dejamos punto por punto lo que pide el profe, qué tenemos hecho y qué nos
 - Todavía no implementamos `useRef` en ninguna parte del proyecto. Es lo único técnico que falta del parcial.
 ---
 
-### 6. Interfaz y experiencia de usuario (15 puntos)
+ 6. Interfaz y experiencia de usuario (15 puntos)
 **Lo que pide el profe:** Navbar funcional, diseño responsive, loading, errores amigables, y cards con título, contenido y botón de acción.
 
 **Lo que cumplimos:**
@@ -159,7 +147,7 @@ Acá dejamos punto por punto lo que pide el profe, qué tenemos hecho y qué nos
 
 ---
 
-### Resumen
+  Resumen
 
 - **CRUD + API (30 pts):** listo.
 - **React Router (20 pts):** listo. La ruta de detalle se llama `/detalle/:id` en vez de `/posts/:id`.
@@ -168,9 +156,6 @@ Acá dejamos punto por punto lo que pide el profe, qué tenemos hecho y qué nos
 - **useRef (5 pts):** falta.
 - **UI/UX (15 pts):** listo.
 
-**Pendiente antes de entregar:**
-1. Agregar `useRef` (por ejemplo, foco automático en el título al abrir el formulario).
-2. Deploy en GitHub Pages y URL en este README.
-3. Comprimir como `ParcialReact.zip` y subir por Teams.
+
 
 
